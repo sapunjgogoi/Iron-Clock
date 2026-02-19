@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.A.R.V.I.S. Core Interface</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #000b14; /* Deep Tech Blue/Black */
+            font-family: 'Orbitron', sans-serif;
+            color: #00f2ff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- BACKGROUND DATA INTERFACE --- */
+        .hud-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px) 0 0 / 50px 50px,
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px) 0 0 / 50px 50px;
+            z-index: 1;
+        }
+
+        /* Floating Data Panels */
+        .data-panel {
+            position: absolute;
+            background: rgba(0, 242, 255, 0.03);
+            border-left: 3px solid #00f2ff;
+            padding: 15px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+        }
+
+        .top-left { top: 5%; left: 5%; width: 200px; border-bottom: 1px solid rgba(0,242,255,0.2); }
+        .top-right { top: 5%; right: 5%; width: 200px; text-align: right; border-bottom: 1px solid rgba(0,242,255,0.2); }
+        .bottom-left { bottom: 5%; left: 5%; width: 250px; }
+        .bottom-right { bottom: 5%; right: 5%; width: 250px; }
+
+        /* Scanning Line */
+        .scanline {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: rgba(0, 242, 255, 0.1);
+            top: -10px;
+            animation: scanning 8s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes scanning {
+            0% { top: -10px; }
+            100% { top: 100%; }
+        }
+
+        /* --- CENTRAL ARC CORE --- */
+        .arc-container {
+            position: relative;
+            z-index: 10;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Outer Rotating Tech Rings */
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid transparent;
+        }
+
+        .ring-1 {
+            width: 480px; height: 480px;
+            border-top: 2px solid #00f2ff;
+            border-bottom: 2px solid #00f2ff;
+            animation: spin 15s linear infinite;
+        }
+
+        .ring-2 {
+            width: 440px; height: 440px;
+            border-left: 2px dashed rgba(0, 242, 255, 0.5);
+            border-right: 2px dashed rgba(0, 242, 255, 0.5);
+            animation: spin 10s linear infinite reverse;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Central Display */
+        .display-core {
+            text-align: center;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
+            padding: 40px;
+            border-radius: 50%;
+        }
+
+        #time {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 0 15px #00f2ff;
+        }
+
+        #date-day {
+            font-size: 1rem;
+            color: #fff;
+            margin-top: 5px;
+            letter-spacing: 4px;
+            opacity: 0.8;
+        }
+
+        .status-tag {
+            color: #facc15;
+            font-size: 0.6rem;
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="hud-bg"></div>
+    <div class="scanline"></div>
+
+    <div class="data-panel top-left">
+        SYSTEM: ACTIVE<br>
+        LOC: SECTOR 7-G<br>
+        OS: JARVIS v4.2
+    </div>
+
+    <div class="data-panel top-right">
+        POWER: 98.4%<br>
+        REACTION: NOMINAL<br>
+        UPLINK: SECURE
+    </div>
+
+    <div class="data-panel bottom-left">
+        <div id="cpu-load">THREAT_SCAN: CLEAR</div>
+        <div>MEM: 4.2 TB AVAILABLE</div>
+    </div>
+
+    <div class="arc-container">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        
+        <div class="display-core">
+            <div id="time">00:00:00</div>
+            <div id="date-day">SYSTEM LOADING</div>
+            <div class="status-tag">>> CORE_STABILIZED <<</div>
+        </div>
+    </div>
+
+    <script>
+        function updateInterface() {
+            const now = new Date();
+            
+            // Time
+            let h = String(now.getHours()).padStart(2, '0');
+            let m = String(now.getMinutes()).padStart(2, '0');
+            let s = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('time').textContent = `${h}:${m}:${s}`;
+            
+            // Date and Day
+            const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+            const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+            
+            const day = dayNames[now.getDay()];
+            const month = monthNames[now.getMonth()];
+            const date = now.getDate();
+            
+            document.getElementById('date-day').textContent = `${day} | ${month} ${date}`;
+
+            // Randomizing the "Data HUD" numbers slightly for realism
+            const cpu = (Math.random() * 5 + 1).toFixed(2);
+            document.getElementById('cpu-load').textContent = `LATENCY: ${cpu}ms`;
+        }
+
+        setInterval(updateInterface, 1000);
+        updateInterface();
+    </script>
+</body>
+</html>
