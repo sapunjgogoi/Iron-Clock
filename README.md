@@ -36,11 +36,8 @@ Metallic futuristic styling
 🧠 J.A.R.V.I.S. HUD Panels
 
 Displays mock system data:
-
 ⚡ Power
-
 📡 Latency
-
 🌐 Uplink
 
 Glassmorphism UI design
@@ -50,11 +47,8 @@ Glassmorphism UI design
 Built using Flexbox
 
 Works across:
-
 Desktop
-
 Tablet
-
 Mobile screens
 
 🎨 Futuristic UI Aesthetic
@@ -62,68 +56,37 @@ Mobile screens
 Typography: Orbitron (Google Fonts)
 
 Colors:
-
 Deep Space Blue
-
 Arc Cyan
-
 Stark Gold
 
 Effects:
-
 Scanline animation
-
 Glow + holographic feel
-
 🛠️ Tech Stack
 🌐 HTML5
 
 Semantic structure for HUD components
 
 🎨 CSS3
-
 @keyframes → animations (rotation, pulse)
-
 Glassmorphism → HUD panels
-
 Radial Gradients → metallic depth
-
 Flexbox → layout system
 
 ⚡ JavaScript (Vanilla)
-
 Real-time clock logic
-
 DOM manipulation
-
 No external libraries
 
 💡 Project Highlights
-
 Clean UI inspired by sci-fi interfaces
-
 Lightweight (no frameworks used)
 
 Great for:
-
-Frontend practice
-
-Animation skills
-
-Portfolio showcase
+Frontend practice Animation skills Portfolio showcase
 
 📌 Future Improvements (Optional Ideas)
 
-Add weather API integration 🌦️
-
-Voice assistant (your JARVIS AI goal 😉)
-
-System stats (CPU/RAM usage simulation)
-
-Dark/Light mode toggle
-
-Glassmorphism for the data panels.
-
-Radial-gradients for the metallic armor depth.
-
+Add weather API integration 🌦️ Voice assistant (your JARVIS AI goal 😉) System stats (CPU/RAM usage simulation) Dark/Light mode toggle Glassmorphism for the data panels. Radial-gradients for the metallic armor depth. 
 JavaScript (Vanilla): For time calculation and DOM manipulation (no external libraries required).
