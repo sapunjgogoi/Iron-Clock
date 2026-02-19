@@ -3,7 +3,9 @@ A Digital Clock
 
 Author : Sapun Jyoti Gogoi
 
-🤖 J.A.R.V.I.S. HUD Digital Clock    Link : https://sapunjgogoi.github.io/Iron-Clock/
+🤖 J.A.R.V.I.S. HUD Digital Clock    
+
+Project URL : https://sapunjgogoi.github.io/Iron-Clock/
 
 A sleek, futuristic digital clock inspired by Iron Man and Stark Industries' Mark 85 HUD.
 This project transforms a normal browser into a high-tech Arc Reactor interface with animated visuals and real-time system-style data.
