@@ -36,11 +36,3 @@ Language: HTML5, CSS3, JavaScript (ES6+).
 Typography: Orbitron via Google Fonts.
 
 Styling: Custom CSS Keyframes and Flexbox.
-
-## Installation & Usage
-Clone the repository:
-
-Bash
-git clone https://github.com/your-username/jarvis-core-interface.git
-Open the file:
-Simply double-click index.html to launch the interface in any modern web browser (Chrome, Firefox, or Edge recommended).
